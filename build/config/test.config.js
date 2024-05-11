@@ -9,6 +9,7 @@ import { minify } from 'rollup-plugin-esbuild';
 import typescript from 'rollup-plugin-typescript2';
 import vue from '@vitejs/plugin-vue';
 import del from 'rollup-plugin-delete';
+import { DEFAULT_EXTENSIONS } from '@babel/core';
 
 import base from './rollup.base.config.js';
 export default {
@@ -57,6 +58,7 @@ export default {
     }),
     babel({
       exclude: ['node_modules/**'],
+      extensions: [...DEFAULT_EXTENSIONS, '.ts', '.tsx'],
       babelHelpers: 'runtime',
     }),
     postcss({
@@ -65,7 +67,6 @@ export default {
         postcssPresetEnv(),
         cssnanoPlugin(), // 压缩 css
       ],
-      // mode: 'extract',
       extract: 'virtual-scroll-list.css', // 导出 css 为单文件
     }),
   ],

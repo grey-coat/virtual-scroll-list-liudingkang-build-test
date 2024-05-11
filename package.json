@@ -14,7 +14,8 @@
   "scripts": {
     "build1": "rollup -c ./build/config/test.config.js",
     "build2": "rollup -c ./build/config/test.chunk.config.js",
-    "build3": "rollup -c ./build/config/test.preserve.config.js",
+    "build3": "rollup -c ./build/config/test.manualchunks.config.js",
+    "build4": "rollup -c ./build/config/test.preservemodules.config.js",
     "dev": "node build/bin.js dev",
     "dev1": "rollup -wc ./build/config/rollup.dev.config.js",
     "eslint": "eslint --ext .vue,.ts,.js .",

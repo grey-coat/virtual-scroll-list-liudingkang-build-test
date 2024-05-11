@@ -1,3 +1,5 @@
+import path from 'path';
+
 import autoprefixer from 'autoprefixer';
 import cssnanoPlugin from 'cssnano';
 import postcssPresetEnv from 'postcss-preset-env';
@@ -11,6 +13,7 @@ export default {
   ...base,
   input: {
     'packages/fixed-size-list/fixed-size-list': 'src/packages/fixed-size-list/index.ts',
+    'packages/dynamic-list/dynamic-list': 'src/packages/dynamic-list/index.ts',
     'packages/list-item/list-item': 'src/packages/list-item/index.ts',
   },
   output: [
@@ -19,6 +22,11 @@ export default {
       dir: 'dist',
       entryFileNames: `[name].mjs`,
       assetFileNames: '[name][extname]',
+      manualChunks(id) {
+        if (id.includes('packages\\list-item')) {
+          return path.join('packages', 'list-item', 'list-item');
+        }
+      },
     },
   ],
   external: ['vue'],
