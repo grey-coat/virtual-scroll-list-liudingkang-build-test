@@ -95,6 +95,7 @@
 <style scoped>
   .virtual-list-container {
     overflow-y: auto;
+    color: red;
   }
 
   .virtual-list {
